@@ -6,7 +6,7 @@ const PROJECTS_DATA = [
     description: "Engineered a real-time conversion tool fetching live market data for 150+ global currencies via asynchronous API Integration, utilizing Vercel for continous deployment and scalability ",
     image: "https://images.unsplash.com/photo-1531747118685-ca8fa6e08806?auto=format&fit=crop&w=600&q=80",
     liveUrl: "#",
-    githubUrl: "https://github.com/Harshraj35",
+    githubUrl: "https://github.com/Anujram07/Currency_Converter",
     tags: ["React+Vite", "FastAPI", "JavaScript","TailwindCSS"]
   },
   {
@@ -14,7 +14,7 @@ const PROJECTS_DATA = [
     description: "Developed a customizable security utility using Math.random logic to generate cryptographically varied strings based on user-defined complexity constraints",
     image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=600&q=80",
     liveUrl: "#",
-    githubUrl: "https://github.com/Harshraj35",
+    githubUrl: "https://github.com/Anujram07/passwordGenrator",
     tags: ["React+Vite", "JavaScript","TailwindCSS"]
   },
   {
