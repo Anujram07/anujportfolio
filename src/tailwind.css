@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+/* =========================================
+  1. TAILWIND v4 ENGINE REGISTER 
+  =========================================
+  This explicitly maps your custom CSS design properties into 
+  Tailwind utility keywords so they compile perfectly.
+*/
+@theme {
+  --color-bgColor: var(--bg-color);
+  --color-surfaceColor: var(--surface-color);
+  --color-textMain: var(--text-main);
+  --color-textMuted: var(--text-muted);
+  --color-neonPrimary: var(--neon-primary);
+  --color-neonSecondary: var(--neon-secondary);
+  
+  --font-heading: "Orbitron", sans-serif;
+  --font-body: "Poppins", sans-serif;
+}
+
+/* =========================================
+  2. CORE DESIGN VARIABLE PALETTES
+  =========================================
+*/
+:root {
+  /* Colors */
+  --bg-color: #0a0a0a;
+  --surface-color: #121212;
+  --glass-bg: rgba(20, 20, 20, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  
+  --text-main: #f0f0f0;
+  --text-muted: #a0a0a0;
+  
+  --neon-primary: #00f0ff;
+  --neon-secondary: #ff003c;
+  --neon-glow: rgba(0, 240, 255, 0.5);
+}
+
+/* Light Theme Variables */
+.light-theme {
+  --bg-color: #f7f9fc;
+  --surface-color: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  
+  --text-main: #1a1a1a;
+  --text-muted: #555555;
+  
+  --neon-primary: #0066ff;
+  --neon-secondary: #ff003c;
+  --neon-glow: rgba(0, 102, 255, 0.3);
+}
+
+/* =========================================
+  3. GLOBAL APP RESETS
+  =========================================
+*/
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Poppins', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+/* =========================================
+  4. CUSTOM COMPLEX WORKSPACE STYLES
+  =========================================
+  Complex custom animations and layouts that don't belong 
+  directly inline inside React utilities.
+*/
+
+/* Glassmorphism Frame Cards */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* Glowing Neon Text */
+.neon-text {
+  color: var(--neon-primary);
+  text-shadow: 0 0 10px var(--neon-glow);
+}
+
+/* Interactive Floating Input Groups 
+  (Handles the smooth label transitions in the contact form)
+*/
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 0.75rem 0;
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid var(--glass-border);
+  color: var(--text-main);
+  outline: none;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: var(--neon-primary);
+}
+
+.input-group label {
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  color: var(--text-muted);
+  pointer-events: none;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Adjust label starting point for multi-line textareas */
+.input-group textarea ~ label {
+  top: 0.75rem;
+}
+
+/* Float logic triggered on user active focus or input retention */
+.input-group input:focus ~ label,
+.input-group input:not(:placeholder-shown) ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:not(:placeholder-shown) ~ label {
+  top: -1.25rem;
+  font-size: 0.75rem;
+  color: var(--neon-primary);
+}
+
+/* Glitch Animation Subsystems */
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+.glitch-text::before {
+  color: var(--neon-primary);
+  animation: glitch-1 2s infinite linear alternate-reverse;
+  z-index: -1;
+}
+
+.glitch-text::after {
+  color: var(--neon-secondary);
+  animation: glitch-2 3s infinite linear alternate-reverse;
+  z-index: -2;
+}
+
+@keyframes glitch-1 {
+  0% { clip-path: inset(20% 0 80% 0); transform: translate(-2px, 1px); }
+  40% { clip-path: inset(40% 0 50% 0); transform: translate(-2px, 2px); }
+  80% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 1px); }
+  100% { clip-path: inset(30% 0 50% 0); transform: translate(1px, -1px); }
+}
+
+@keyframes glitch-2 {
+  0% { clip-path: inset(10% 0 60% 0); transform: translate(2px, 1px); }
+  50% { clip-path: inset(70% 0 10% 0); transform: translate(-2px, -1px); }
+  100% { clip-path: inset(50% 0 30% 0); transform: translate(-1px, -2px); }
+}
